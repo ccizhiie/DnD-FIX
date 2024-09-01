@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Game</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/font.css">
+</head>
+
+<body>
+    <section class="hero-room">
+        <!-- <div class="container"> -->
+        <div class="text-end pt-5 me-4">
+            <!--  -->
+            <a href="login.html" class="text-decoration-none">
+                <span class="text-light me-5 fw-semibold bottom-border-red">Log out</span>
+            </a>
+            <!--  -->
+        </div>
+        <div class="text-center">
+            <img src="assets/logo-2.png" alt="" class="mt-2" width="190px">
+        </div>
+        <!-- </div> -->
+        <div class="container p-4">
+            <div class="row m-5 d-flex justify-content-center align-items-center">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="bg-gradien text-center">
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col-md-12">
+                                    <img src="assets/icon-ring.png" alt="" class="mt-5 mb-4" width="162px">
+                                </div>
+                                <div class="col-md-12 " style="width: 240px; height: 140px;">
+                                    <h2 class="text-htg fw-semibold text-light">Quick Play</h2>
+                                    <h6 class="text-htg text-center text-light mt-4">Quickly join a public game
+                                        that is waiting for players.</h6>
+                                </div>
+                                <div class="col-md-12">
+                                </div>
+                                <div class="col-md-12 position-relative text-center mb-5 mt-2">
+                                    <!--  -->
+                                    <a href="" class="text-decoration-none" id="quickplay">
+                                        <img src="assets/btn-2.png" alt="" class="img-fluid">
+                                        <h4
+                                            class="text-htg position-absolute top-50 start-50 translate-middle m-0 text-light">
+                                            PLAY</h4>
+                                    </a>
+                                    <!--  -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="container d-flex justify-content-center align-items-center">
+                        <div class="bg-gradien text-center">
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col-md-12">
+                                    <img src="assets/icon-book.png" alt="" class="mt-5 mb-4" width="162px">
+                                </div>
+                                <div class="col-md-12 " style="width: 240px; height: 140px;">
+                                    <h2 class="text-htg fw-semibold text-light">Join a Game</h2>
+                                    <h6 class="text-htg text-center text-light mt-4">Find a public or <br>
+                                        friend’s game that is <br>
+                                        waiting for players.</h6>
+                                </div>
+                                <div class="col-md-12">
+                                    <!--  -->
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col-md-12 mt-3 mb-3 position-relative">
+                                                <img src="assets/input-code.png" alt="" class="img-fluid">
+                                                <input type="text" name="" id="room-code" class="input-overlay text-center"
+                                                    placeholder="Input code">
+                                            </div>
+
+
+                                            <div class="col-md-12 position-relative text-center mb-5 mt-2">
+                                                <a href="main-2.html" class="text-decoration-none">
+                                                    <img src="assets/btn-2.png" alt="" class="img-fluid">
+                                                    <h4
+                                                        class="text-htg position-absolute top-50 start-50 translate-middle m-0 text-light">
+                                                        ENTER</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="container d-flex justify-content-center align-items-center">
+                        <div class="bg-gradien text-center">
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col-md-12">
+                                    <img src="assets/icon-archer.png" alt="" class="mt-5 mb-4" width="162px">
+                                </div>
+                                <div class="col-md-12 " style="width: 240px; height: 140px;">
+                                    <h2 class="text-htg fw-semibold text-light">Host a Game</h2>
+                                    <h6 class="text-htg text-center text-light mt-4">Host a public or
+                                        private game</h6>
+                                </div>
+                                <div class="col-md-12">
+                                </div>
+                                <div class="col-md-12 position-relative text-center mb-5 mt-2">
+                                    <!--  -->
+                                    <a href="" class="text-decoration-none">
+                                        <img src="assets/btn-2.png" alt="" class="img-fluid">
+                                        <h4
+                                            class="text-htg position-absolute top-50 start-50 translate-middle m-0 text-light">
+                                            PLAY</h4>
+                                    </a>
+                                    <!--  -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Load the login.js file -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="js/custom.js"></script>
+    <script type="module" src="/js/login.js"></script>
+</body>
+
+</html>

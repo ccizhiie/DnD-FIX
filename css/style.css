@@ -1,0 +1,220 @@
+body {
+    overflow-x: hidden; /* Nonaktifkan scroll horizontal */
+}
+
+h2 {
+    font-family: 'HU The Game', sans-serif;
+    font-size: 30px;
+    padding-top: 12px;
+}
+span{
+    font-family: 'HU The Game', sans-serif;
+}
+
+.text-htg{
+    font-family: 'HU The Game', sans-serif;
+}
+/* BG */
+
+.hero-start {
+    background-image: url('../assets/bg-start.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; 
+    min-height: 100vh;
+}
+.hero-camp {
+    background-image: url('../assets/bg-camp.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; 
+    min-height: 100vh;
+}
+.hero-map {
+    background-image: url('../assets/bg-map.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; 
+    min-height: 100vh;
+}
+.hero-login {
+    background-image: url('../assets/bg-login.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; 
+    min-height: 800px;
+}
+.hero-room {
+    background-image: url('../assets/bg-room.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; 
+    min-height: 800px;
+}
+
+/* BG */
+
+
+.input-container {
+    position: relative;
+    display: inline-block;
+    width: 60%;
+    height: 65px; 
+    background-image: url('../assets/input.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.input-field {
+    position: absolute;
+    top: 50%;
+    left: 45px; /* Adjust based on icon size */
+    transform: translateY(-50%);
+    width: calc(100% - 50px); /* Adjust based on icon size and padding */
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 20px; /* Adjust padding for text spacing */
+}
+
+.v-icon {
+    position: absolute;
+    left: 30px; /* Adjust based on design */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust based on icon size */
+}
+
+.btn-container {
+    position: relative;
+    display: inline-block;
+    width: 60%;
+    height: 65px; 
+    background-image: url('../assets/button.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bottom-border-red {
+    border-bottom: 3px solid #FF0000; /* Border bawah merah dengan ketebalan 3px */
+    padding-bottom: 3px;
+}
+.bg-gradien {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    width: 100%;
+    height: 400px;
+}
+.input-overlay {
+    position: absolute;
+    top: 50%; /* Menempatkan input di tengah gambar secara vertikal */
+    left: 50%; /* Menempatkan input di tengah gambar secara horizontal */
+    transform: translate(-50%, -50%); /* Agar input benar-benar di tengah */
+    width: 80%; /* Sesuaikan lebar input */
+    background-color: transparent; /* Membuat latar belakang input transparan */
+    border: none; /* Menghilangkan border */
+    color: #fff; /* Mengatur warna teks agar terlihat di atas gambar */
+}
+
+.input-overlay:focus {
+    outline: none; /* Menghilangkan outline saat inputan aktif */
+}
+.img-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.overlay-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: -40px; /* Adjust padding as needed */
+}
+
+.img-overlay {
+    width: 95%;
+}
+
+.text-container {
+    z-index: 3; /* Ensure this is on top of both background images */
+    position: relative; /* Keep it positioned relative to the container */
+}
+
+.text-tapered-border {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px; /* Adjust padding as needed */
+    width: 100%;
+}
+
+.text-tapered-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    /*Thicknessofthecenterpart*/background: linear-gradient(to right, transparent, #ffffff, transparent);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.cs-code{
+    background-color: #30444C; border: 1px solid #616364;
+}
+
+.text-on-image-container {
+    position: absolute;
+    right: 0; /* Adjust as needed to align properly */
+    top: 50%; /* Adjust as needed to align vertically */
+    transform: translateY(-50%); /* Center vertically */
+    z-index: 10; /* Ensures it is on top of other elements */
+}
+
+.text-on-image-container img {
+    display: block;
+    width: 100%; /* Adjust as needed */
+}
+
+.text-on-image-container .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff; /* Adjust text color for contrast */
+    text-align: center;
+    z-index: 10;
+}
+
+.placeholder-white::placeholder {
+    color: #ffffff; /* Warna putih */
+}
+.bg-input{
+    background-color: #2E373A;
+}
+.room-list{
+    border: 2px solid #616364; padding: 10px 15px; margin-top: 0; height: 250px;
+}
+.sticky-right {
+    position: absolute; /* Agar dapat menempel pada sisi kanan */
+    top: 0; /* Menempel di atas */
+    right: 0; /* Menempel di kanan */
+    bottom: 0; /* Menempel di bawah */
+    width: 100%; /* Mengisi lebar kontainer */
+    height: 100%; /* Mengisi tinggi kontainer */
+    display: flex;
+    align-items: center; /* Vertikal centering konten */
+    justify-content: center; /* Horizontal centering konten */
+}
+
