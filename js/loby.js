@@ -35,12 +35,15 @@ if (roomCode) {
         playerList.innerHTML = '';
 
         const sortedPlayers = Object.entries(players).sort(([idA], [idB]) => (idA === hostId ? -1 : 1));
-
         for (const [playerId, playerData] of sortedPlayers) {
-            const playerItem = document.createElement('div');
-            playerItem.innerHTML = `${playerData.email || 'No email'}  ${playerId === hostId ? '<img src="assets/hostt.svg" alt="Room Master" class="room-master-img">' : `(${playerData.ready ? 'Ready' : 'Not Ready'}) <img src="assets/2x.svg">  `}`;
-            playerList.appendChild(playerItem);
-        }
+          const playerItem = document.createElement('div');
+          playerItem.innerHTML = `${playerData.email || 'No email'}
+              ${playerId === hostId ?
+                  '<img src="assets/hostt.svg" alt="Room Master" class="room-master-img">' :
+                  `(${playerData.ready ? 'Ready' : 'Not Ready'}) <img src="assets/2x.svg" id="kick">`}
+          `;
+          playerList.appendChild(playerItem);
+      }
 
         const startGameBtn = document.getElementById('start-game');
         const readyBtn = document.getElementById('ready-btn');
