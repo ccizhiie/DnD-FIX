@@ -38,7 +38,7 @@ if (roomCode) {
 
         for (const [playerId, playerData] of sortedPlayers) {
             const playerItem = document.createElement('div');
-            playerItem.textContent = `${playerData.email || 'No email'} ${playerId === hostId ? '(Room Master)' : `(${playerData.ready ? 'Ready' : 'Not Ready'})`}`;
+            playerItem.innerHTML = `${playerData.email || 'No email'}  ${playerId === hostId ? '<img src="assets/hostt.svg" alt="Room Master" class="room-master-img">' : `(${playerData.ready ? 'Ready' : 'Not Ready'}) <img src="assets/2x.svg">  `}`;
             playerList.appendChild(playerItem);
         }
 
