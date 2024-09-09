@@ -116,7 +116,6 @@ function generateCharacter() {
     });
 }
 
-// Function to check if all players' goStatus is true
 function checkAllPlayersGoStatus(roomCode) {
     const roomRef = ref(db, `rooms/${roomCode}/players`);
 

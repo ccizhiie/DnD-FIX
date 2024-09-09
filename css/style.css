@@ -1,6 +1,19 @@
 body {
   overflow-x: hidden; /* Nonaktifkan scroll horizontal */
 }
+.btn-container {
+  background-color: transparent; /* Menghapus latar belakang */
+  border: none; /* Menghapus border */
+  padding: 10px 20px; /* Mengatur padding */
+  cursor: pointer; /* Menambahkan pointer untuk menunjukkan tombol dapat diklik */
+}
+
+.btn-container h2 {
+  color: #fff; /* Mengatur warna teks menjadi putih */
+  margin: 0; /* Menghilangkan margin */
+  font-size: 24px; /* Ukuran teks */
+}
+
 
 h2 {
   font-family: 'HU The Game', sans-serif;
@@ -226,6 +239,7 @@ span {
 }
 
 /* Map 3 */
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -296,19 +310,19 @@ span {
 
 .circle-player-2 {
   overflow: hidden;
-  border: 5px solid #414d5c;
+
   border-radius: 9999px;
   background: #fff;
 }
 .circle-player-3 {
   overflow: hidden;
-  border: 5px solid #363f4a;
+
   border-radius: 9999px;
   background: #fff;
 }
 .circle-player-4 {
   overflow: hidden;
-  border: 5px solid #20252b;
+
   border-radius: 9999px;
   background: #fff;
 }
@@ -324,4 +338,3 @@ span {
 .grid-map tr td {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
-bagaimana caranya agar karakter bisa diubah kesana kemari dengan kursor? sesuai keinginan sayas
