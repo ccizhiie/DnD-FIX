@@ -10,7 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "1010963587070",
     appId: "1:1010963587070:web:bcb761dc0cba09a52d6aaf",
     measurementId: "G-9HVXKJ3NSZ"
-};
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -29,12 +29,6 @@ document.getElementById('login-btn').addEventListener('click', function(event) {
         })
         .catch(error => {
             console.error('Login Error:', error);
-
-            // Show the error message
-            const errorContainer = document.getElementById('login-error');
-            errorContainer.style.display = 'block'; // Make the error message visible
-
-            // Optionally, you could also set the error message text dynamically based on the error:
-            // errorContainer.querySelector('span').textContent = 'Login failed: ' + error.message;
+            alert('Login failed: ' + error.message);
         });
 });
