@@ -19,6 +19,8 @@ const db = getDatabase(app);
 
 const urlParams = new URLSearchParams(window.location.search);
 const roomCode = urlParams.get('roomCode');
+const code = document.getElementById('code');
+code.appendChild(roomCode);
 
 if (roomCode) {
     const roomRef = ref(db, 'rooms/' + roomCode);
@@ -78,6 +80,17 @@ if (roomCode) {
         }
     });
 }
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        window.location.href = 'login.html'; // Redirect to login page after logout
+    }).catch((error) => {
+        // An error happened.
+        console.error('Logout Error:', error);
+        alert('Logout failed: ' + error.message);
+    });
+});
 
 function handleReadyClick() {
     const roomCode = new URLSearchParams(window.location.search).get('roomCode');
