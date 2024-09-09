@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAijQZfI-UPIuxxYLIY7MQmHzKsdUHAkpc",
@@ -10,7 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "1010963587070",
     appId: "1:1010963587070:web:bcb761dc0cba09a52d6aaf",
     measurementId: "G-9HVXKJ3NSZ"
-  };
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

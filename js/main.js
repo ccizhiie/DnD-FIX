@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
 import { getDatabase, ref, set, update, get, query, orderByChild, equalTo, limitToFirst } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js';
-import { getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { getAuth, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAijQZfI-UPIuxxYLIY7MQmHzKsdUHAkpc",
@@ -17,12 +17,23 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+// Log user information upon authentication state change
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("User is signed in:", user); // Log entire user object
+        console.log("User ID:", user.uid); // Log user's UID
+        console.log("User Email:", user.email); // Log user's Email
+    } else {
+        console.log("No user is signed in."); // Log when no user is signed in
+    }
+});
+
+// Logout logic
 document.getElementById('logout-btn').addEventListener('click', () => {
     signOut(auth).then(() => {
-        // Sign-out successful.
+        console.log('User logged out.');
         window.location.href = 'login.html'; // Redirect to login page after logout
     }).catch((error) => {
-        // An error happened.
         console.error('Logout Error:', error);
         alert('Logout failed: ' + error.message);
     });
@@ -38,29 +49,38 @@ document.getElementById('enter-code').addEventListener('click', function() {
 });
 
 document.getElementById('host-game').addEventListener('click', function() {
-    const userId = auth.currentUser.uid;
-    const userEmail = auth.currentUser.email; // Get the current user's email
-    const roomCode = generateRoomCode();
+    console.log("Host Game Button Clicked"); // Debug
+
+    const userId = auth.currentUser ? auth.currentUser.uid : null; // Ensure auth.currentUser is not null
+    const userEmail = auth.currentUser ? auth.currentUser.email : null; // Ensure auth.currentUser is not null
+
+    console.log("User ID (currentUser):", userId); // Log user's UID
+    console.log("User Email (currentUser):", userEmail); // Log user's email
 
     if (!userEmail) {
         console.error('User email not found.');
         return;
     }
 
+    const roomCode = generateRoomCode();
+    console.log("Generated Room Code:", roomCode); // Log generated room code
+
     set(ref(db, 'rooms/' + roomCode), {
         host: userId,
-        players: {
-            [userId]: {
-                email: userEmail // Store the user's email
-            }
+        players: { 
+            [userId]: { 
+                email: userEmail
+            } 
         },
         status: 'waiting'
     }).then(() => {
-        window.location.href = 'lobby.html?roomCode=' + roomCode;
+        console.log("Room created successfully, redirecting to lobby..."); // Log success
+        window.location.href = 'loby.html?roomCode=' + roomCode;
     }).catch(error => {
         console.error('Error creating room:', error);
     });
 });
+
 
 function generateRoomCode() {
     return Math.random().toString(36).substring(2, 7).toUpperCase();
@@ -85,7 +105,7 @@ function joinRoom(roomCode) {
 
                 // Update the players list in the database
                 update(roomRef, { players: players }).then(() => {
-                    window.location.href = 'lobby.html?roomCode=' + roomCode;
+                    window.location.href = 'loby.html?roomCode=' + roomCode;
                 }).catch(error => {
                     console.error('Failed to join room:', error);
                     alert('Failed to join room.');
@@ -105,7 +125,7 @@ function joinRoom(roomCode) {
 
 function joinRandomRoom() {
     const roomsRef = query(ref(db, 'rooms'), orderByChild('status'), equalTo('waiting'));
-
+    
     get(roomsRef).then(snapshot => {
         const availableRooms = [];
         snapshot.forEach(roomSnapshot => {

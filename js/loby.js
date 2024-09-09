@@ -20,12 +20,13 @@ const db = getDatabase(app);
 const urlParams = new URLSearchParams(window.location.search);
 const roomCode = urlParams.get('roomCode');
 const code = document.getElementById('code');
-code.appendChild(roomCode);
+
 
 if (roomCode) {
     const roomRef = ref(db, 'rooms/' + roomCode);
 
     onValue(roomRef, (snapshot) => {
+        code.textContent = roomCode; // Set the text content to the room code
         const roomData = snapshot.val();
         const players = roomData.players || {};
         const hostId = roomData.host;
