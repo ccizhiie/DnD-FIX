@@ -3,7 +3,7 @@
 
 <head>
     <title>My Game</title>
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>  
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
@@ -33,18 +33,23 @@
                             <h5 class="text-htg ps-4 pe-4 text-light cs-code" id="code"></h5>
                         </div>
 
-                        <!-- Background Image -->
-                        <img src="assets/bg-main-2.png" alt="" class="img-background w-100">
+                       <!-- Background Image -->
+<img src="assets/bg-main-2.png" alt="" class="img-background w-100" style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 1;">
 
-                        <!-- Overlay Image -->
-                        <div class="container mt-2">
-                            <h4 class="text-light text-center text-htg p-1"
-                                style="z-index: 9; position: relative; background-color: #30444C; margin-bottom: 0;">
-                                Players
-                            </h4>
-                            <div class="container room-list" id="player-list">
-                                <!-- Players will be dynamically inserted here -->
-                            </div>
+<!-- Overlay Image -->
+<div class="container mt-2" style="position: relative; z-index: 10;">
+    <h4 class="text-light text-center text-htg p-1"
+        style="background-color: #30444C; margin-bottom: 0;">
+        Players
+    </h4>
+    <div class="container room-list" id="player-list"
+         style="color: white;  text-align: center; font-size: 20x; z-index: 15;">
+    </div>
+</div>
+
+</div>
+
+
                         </div>
                     </div>
                 </div>
