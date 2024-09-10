@@ -92,7 +92,7 @@ if (roomCode) {
         }
 
         if (roomData.status === 'started') {
-            window.location.href = 'character.html?roomCode=' + roomCode;
+            window.location.href = 'generate.html?roomCode=' + roomCode;
         }
 
         // Attach event listeners
