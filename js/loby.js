@@ -97,9 +97,9 @@ if (roomCode) {
             unreadyBtn.style.display = 'none';
         }
 
-        readyBtn.addEventListener('click', handleReadyClick);
-        unreadyBtn.addEventListener('click', handleUnreadyClick);
-        leaveBtn.addEventListener('click', handleLeaveClick);
+        // readyBtn.addEventListener('click', handleReadyClick);
+        // unreadyBtn.addEventListener('click', handleUnreadyClick);
+        // leaveBtn.addEventListener('click', handleLeaveClick);
 
         if (startGameBtn.style.display === 'block') {
             startGameBtn.addEventListener('click', handleStartGameClick);
@@ -116,6 +116,20 @@ document.getElementById('logout-btn').addEventListener('click', () => {
         console.error('Logout Error:', error);
         alert('Logout failed: ' + error.message);
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const leaveBtn = document.getElementById('leave-btn');
+    if (leaveBtn) {
+        leaveBtn.addEventListener('click', handleLeaveClick);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const readyBtn = document.getElementById('leave-btn');
+    if (readyBtn) {
+        readyBtn.addEventListener('click', handleLeaveClick);
+    }
 });
 
 function handleReadyClick() {
