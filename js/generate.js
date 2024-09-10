@@ -126,7 +126,7 @@ function checkAllPlayersGoStatus(roomCode) {
 
             if (allReady) {
                 setTimeout(() => {
-                    window.location.href = "dice.html?roomcode=" + roomCode;
+                    window.location.href = "map.html?roomcode=" + roomCode;
                 }, 3000); // Wait 3 seconds before redirecting
             }
         }
