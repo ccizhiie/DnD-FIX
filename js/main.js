@@ -24,7 +24,7 @@ onAuthStateChanged(auth, (user) => {
         console.log("User ID:", user.uid); // Log user's UID
         console.log("User Email:", user.email); // Log user's Email
     } else {
-        console.log("No user is signed in."); // Log when no user is signed in
+        console.log("No user is signed in."); // Log when no user is signed     in
     }
 });
 
