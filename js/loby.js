@@ -21,36 +21,58 @@ const urlParams = new URLSearchParams(window.location.search);
 const roomCode = urlParams.get('roomCode');
 const code = document.getElementById('code');
 
-
 if (roomCode) {
     const roomRef = ref(db, 'rooms/' + roomCode);
-
+    
     onValue(roomRef, (snapshot) => {
         code.textContent = roomCode; // Set the text content to the room code
         const roomData = snapshot.val();
         const players = roomData.players || {};
         const hostId = roomData.host;
+        const currentUserId = auth.currentUser.uid;
+
+        // Check if the current player is still in the room
+        if (!players[currentUserId]) {
+            // If the current player is removed, redirect to main.html
+            window.location.href = 'main.html';
+            return; // Stop further execution
+        }
 
         const playerList = document.getElementById('player-list');
         playerList.innerHTML = '';
 
         const sortedPlayers = Object.entries(players).sort(([idA], [idB]) => (idA === hostId ? -1 : 1));
         for (const [playerId, playerData] of sortedPlayers) {
-          const playerItem = document.createElement('div');
-          playerItem.innerHTML = `${playerData.email || 'No email'}
-              ${playerId === hostId ?
-                  '<img src="assets/hostt.svg" alt="Room Master" class="room-master-img">' :
-                  `(${playerData.ready ? 'Ready' : 'Not Ready'}) <img src="assets/2x.svg" id="kick">`}
-          `;
-          playerList.appendChild(playerItem);
-      }
+            const playerItem = document.createElement('div');
+            let playerContent = `${playerData.email || 'No email'}`;
+
+            // Check if the player is the host
+            if (playerId === hostId) {
+                playerContent += '<img src="assets/hostt.svg" alt="Room Master" class="room-master-img">';
+            } else {
+                // Show "Ready" or "Not Ready" status for non-host players only
+                playerContent += ` (${playerData.ready ? 'Ready' : 'Not Ready'})`;
+
+                // Show the kick button only for the host user
+                if (currentUserId === hostId) {
+                    playerContent += `<img src="assets/2x.svg" id="kick-${playerId}" class="kick-btn">`;
+                }
+            }
+
+            playerItem.innerHTML = playerContent;
+            playerList.appendChild(playerItem);
+
+            // Attach event listener for the kick button, if visible
+            if (currentUserId === hostId && playerId !== hostId) {
+                const kickButton = document.getElementById(`kick-${playerId}`);
+                kickButton.addEventListener('click', () => handleKick(playerId));
+            }
+        }
 
         const startGameBtn = document.getElementById('start-game');
         const readyBtn = document.getElementById('ready-btn');
         const unreadyBtn = document.getElementById('unready-btn');
         const leaveBtn = document.getElementById('leave-btn');
-
-        const currentUserId = auth.currentUser.uid;
 
         if (currentUserId === roomData.host) {
             startGameBtn.style.display = 'block';
@@ -118,6 +140,16 @@ function handleLeaveClick() {
         console.log('Player removed successfully.');
         checkAndDeleteRoomIfEmpty(roomCode);
     }).catch(error => console.error('Failed to leave room:', error));
+}
+
+function handleKick(playerId) {
+    const roomCode = new URLSearchParams(window.location.search).get('roomCode');
+    const roomRef = ref(db, 'rooms/' + roomCode + '/players/' + playerId);
+
+    remove(roomRef).then(() => {
+        console.log('Player kicked successfully.');
+        checkAndDeleteRoomIfEmpty(roomCode);
+    }).catch(error => console.error('Failed to kick player:', error));
 }
 
 function checkAndDeleteRoomIfEmpty(roomCode) {
