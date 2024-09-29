@@ -14,7 +14,6 @@ body {
   font-size: 24px; /* Ukuran teks */
 }
 
-
 h2 {
   font-family: 'HU The Game', sans-serif;
   font-size: 30px;
@@ -337,13 +336,26 @@ span {
 }
 .grid-map tr td {
   border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+.grid-map-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 9999px;
+  max-width: 100%;
+  margin: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 /* Make sure the parent container is positioned relative */
-#start-btn, #unready-btn {
+#start-btn,
+#unready-btn {
   display: none; /* Menyembunyikan button secara default */
 }
 
 #start-btn.active {
   display: block; /* Menampilkan button jika ada class "active" */
 }
-

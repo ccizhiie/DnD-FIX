@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   const gridSize = 45; // Ukuran grid dalam pixel
-  const gridContainer = document.querySelector(".grid-container");
+  const gridContainer = document.querySelector('.grid-container');
   const gridRect = gridContainer.getBoundingClientRect();
 
-  const players = document.querySelectorAll(".circle-player__in-map");
+  const players = document.querySelectorAll('.circle-player__in-map');
 
   // Memuat posisi karakter dari localStorage
   players.forEach((player, index) => {
@@ -14,16 +14,19 @@ document.addEventListener("DOMContentLoaded", function () {
       player.style.top = `${top}px`;
     }
 
-    player.addEventListener("mousedown", startDrag);
+    player.addEventListener('mousedown', startDrag);
   });
 
   function startDrag(e) {
     e.preventDefault();
     const player = e.target;
-    player.classList.add("dragging");
+    player.classList.add('dragging');
 
     const startX = e.clientX;
+    console.log(e);
+    console.log('e.clientX', e.clientX);
     const startY = e.clientY;
+    console.log('e.clientY', e.clientY);
 
     const rect = player.getBoundingClientRect();
     const offsetX = startX - rect.left;
@@ -41,10 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
 
-      player.classList.remove("dragging");
+      player.classList.remove('dragging');
 
       // Snap ke grid
       const finalLeft = parseInt(player.style.left, 10);
@@ -60,18 +63,51 @@ document.addEventListener("DOMContentLoaded", function () {
       const playerIndex = Array.from(players).indexOf(player);
       const position = {
         left: snappedLeft,
-        top: snappedTop
+        top: snappedTop,
       };
       localStorage.setItem(`playerPosition${playerIndex}`, JSON.stringify(position));
     }
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
   }
 
-  players.forEach(player => {
+  players.forEach((player) => {
     player.ondragstart = function () {
       return false;
     };
   });
+
+  //#region DRAG N DROP PLAYER
+
+  // Get all the table cells
+  const cells = document.querySelectorAll('.grid-map td');
+  let draggedElement = null; // To store the dragged element
+
+  // Add drag and drop event listeners to each cell
+  cells.forEach((cell) => {
+    // When dragging starts
+    cell.addEventListener('dragstart', (event) => {
+      if (event.target.tagName === 'IMG') {
+        draggedElement = event.target; // Store the image being dragged
+      }
+    });
+
+    // When dragging over a cell (required to allow dropping)
+    cell.addEventListener('dragover', (event) => {
+      event.preventDefault(); // Necessary to allow a drop
+    });
+
+    // When the image is dropped on a new cell
+    cell.addEventListener('drop', (event) => {
+      event.preventDefault(); // Prevent the default behavior
+
+      // Check if the cell is empty and draggedElement is not null
+      if (draggedElement && !cell.querySelector('img')) {
+        cell.appendChild(draggedElement); // Append the image to the new cell
+        draggedElement = null; // Reset the dragged element
+      }
+    });
+  });
+  //#endregion
 });
