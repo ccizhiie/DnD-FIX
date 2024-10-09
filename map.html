@@ -14,6 +14,38 @@
   <body>
     <section class="hero-map">
       <div class="row">
+        <!-- Player -->
+        <div class="col-md-9 position-absolute d-flex gap-5 top-0 start-0 text-white py-3">
+          <div class="d-flex flex-column gap-1">
+            <div class="position-relative">
+              <img class="circle-player-1" src="assets/player-1.png" alt="Player" />
+              <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" />
+            </div>
+            <p class="m-0 fw-bold">PLAYER 1</p>
+          </div>
+          <div class="d-flex flex-column gap-1">
+            <div class="position-relative">
+              <img class="circle-player-2" src="assets/player-2.png" alt="Player" />
+              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
+            </div>
+            <p class="m-0 fw-bold">PLAYER 2</p>
+          </div>
+          <div class="d-flex flex-column gap-1">
+            <div class="position-relative">
+              <img class="circle-player-3" src="assets/player-3.png" alt="Player" />
+              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
+            </div>
+            <p class="m-0 fw-bold">PLAYER 3</p>
+          </div>
+          <div class="d-flex flex-column gap-1">
+            <div class="position-relative">
+              <img class="circle-player-4" src="assets/player-4.png" alt="Player" />
+              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
+            </div>
+            <p class="m-0 fw-bold">PLAYER 4</p>
+          </div>
+        </div>
+
         <!-- Grid -->
         <div class="col-md-9 position-absolute grid-container top-0 start-0 p-0">
           <table class="grid-map w-100 h-100">
@@ -46,16 +78,16 @@
               <td></td>
               <td></td>
               <td>
-                <img class="grid-map-img" src="assets/player-1.png" alt="Player" draggable="true" />
+                <img id="player-1" class="grid-map-img" src="assets/player-1.png" alt="Player" draggable="true" />
               </td>
               <td>
-                <img class="grid-map-img" src="assets/player-2.png" alt="Player" draggable="true" />
+                <img id="player-2" class="grid-map-img" src="assets/player-2.png" alt="Player" draggable="true" />
               </td>
               <td>
-                <img class="grid-map-img" src="assets/player-3.png" alt="Player" draggable="true" />
+                <img id="player-3" class="grid-map-img" src="assets/player-3.png" alt="Player" draggable="true" />
               </td>
               <td>
-                <img class="grid-map-img" src="assets/player-4.png" alt="Player" draggable="true" />
+                <img id="player-4" class="grid-map-img" src="assets/player-4.png" alt="Player" draggable="true" />
               </td>
               <td></td>
               <td></td>
@@ -266,37 +298,6 @@
               <td></td>
             </tr>
           </table>
-        </div>
-        <!-- Player -->
-        <div class="col-md-9 position-absolute d-flex gap-5 top-0 start-0 text-white py-3">
-          <div class="d-flex flex-column gap-1">
-            <div class="position-relative">
-              <img class="circle-player-1" src="assets/player-1.png" alt="Player" />
-              <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" />
-            </div>
-            <p class="m-0 fw-bold">PLAYER 1</p>
-          </div>
-          <div class="d-flex flex-column gap-1">
-            <div class="position-relative">
-              <img class="circle-player-2" src="assets/player-2.png" alt="Player" />
-              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
-            </div>
-            <p class="m-0 fw-bold">PLAYER 2</p>
-          </div>
-          <div class="d-flex flex-column gap-1">
-            <div class="position-relative">
-              <img class="circle-player-3" src="assets/player-3.png" alt="Player" />
-              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
-            </div>
-            <p class="m-0 fw-bold">PLAYER 3</p>
-          </div>
-          <div class="d-flex flex-column gap-1">
-            <div class="position-relative">
-              <img class="circle-player-4" src="assets/player-4.png" alt="Player" />
-              <!-- <img class="circle-player__dice position-absolute start-50 translate-middle-x" src="assets/dice-red.png" alt="Dice" /> -->
-            </div>
-            <p class="m-0 fw-bold">PLAYER 4</p>
-          </div>
         </div>
 
         <!-- Player in Map -->
